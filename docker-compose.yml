@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: teams_roles_pstg_db
+      POSTGRES_USER: sowmiya
+      POSTGRES_PASSWORD: sowmiya13
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - teamroleapp_network
+
+  backend:
+    image: josephinesowmiya/teamroleappfinal-backend:latest
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+    volumes:
+      - migrations_data:/app/migrations  # Persist migrations
+    working_dir: /app/app
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://sowmiya:sowmiya13@postgres/teams_roles_pstg_db
+    restart: always
+    command: python app.py
+    networks:
+      - teamroleapp_network
+
+
+  frontend:
+    image: josephinesowmiya/teamroleappfinal-frontend:latest
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: always
+    networks:
+      - teamroleapp_network
+
+volumes:
+  postgres_data:
+  migrations_data:
+
+networks:
+  teamroleapp_network:
+    driver: bridge  

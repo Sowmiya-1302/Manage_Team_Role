@@ -1,0 +1,20 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore Terraform cache
+terraform/.terraform/
+
+# Ignore large Terraform provider files
+terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/
+
+# Ignore database files if necessary
+*.db
+*.sqlite
+
+# Ignore environment files
+.env

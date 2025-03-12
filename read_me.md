@@ -94,3 +94,10 @@ Detailed documentation can be found in the `docs/` directory:
 - User Guide
 - API Documentation
 - Deployment Guide
+
+## UI Mockup Reference
+![Home Page](UIMockups/HomePage.png)
+![Teams Page](UIMockups/TeamsPage.png)
+![Roles Page](UIMockups/RolesPage.png)
+![Create Mockup](UIMockups/CreateMockup.png)
+![Update Mockup](UIMockups/UpdateMockUp.png)
